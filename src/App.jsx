@@ -1,38 +1,40 @@
-import React, { useEffect } from "react"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from "react-router-dom"
-
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Products from "./pages/Products"
-import Contact from "./pages/Contact"
-// import Signup from "./pages/Signup"
-import AdminLogin from "./pages/Login"
-import AdminDashboard from "./pages/Dashboard"
-import Cookies from 'js-cookie';
-import EditProduct from "./pages/EditProduct"
-
-
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AppWrapper = () => {
-  const token = Cookies.get('token');
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation(); 
+  const location = useLocation();
 
   useEffect(() => {
-    if (!token && location.pathname === "/admin-dashboard") {
+    async function checkAuth() {
+      try {
+        const res = await fetch("https://shineaestheticfinds-backend.onrender.com/me", {
+          credentials: "include",  // send cookies
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user);
+        } else {
+          setUser(null);
+        }
+      } catch (error) {
+        setUser(null);
+      }
+    }
+
+    checkAuth();
+  }, []);
+
+  useEffect(() => {
+    // Redirect if trying to access admin routes without auth
+    if (!user && location.pathname.startsWith("/admin-dashboard")) {
       navigate("/login");
     }
-  }, [navigate, location, token]);
+  }, [user, location, navigate]);
 
-  // Updated hide routes logic
+  // Routes where Navbar and Footer should be hidden
   const hideLayoutRoutes = ["/admin-dashboard", "/admin-dashboard/editProduct"];
   const shouldHideLayout = hideLayoutRoutes.some(route =>
     location.pathname.startsWith(route)
@@ -67,12 +69,4 @@ const AppWrapper = () => {
   );
 };
 
-function App() {
-  return (
-    <Router>
-      <AppWrapper />
-    </Router>
-  )
-}
-
-export default App
+export default AppWrapper;
