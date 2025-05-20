@@ -21,7 +21,7 @@ const UploadProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-        const res = await fetch("http://localhost:8080/uploadProduct", {
+        const res = await fetch("https://shineaestheticfinds-backend.onrender.com/uploadProduct", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -20,7 +20,7 @@ export default function Sidebar({ active, setActive }) {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch("http://localhost:8080/logout", {
+      const res = await fetch("https://shineaestheticfinds-backend.onrender.com/logout", {
         method: "POST",
         credentials: "include",  // Send cookies if session-based
       });

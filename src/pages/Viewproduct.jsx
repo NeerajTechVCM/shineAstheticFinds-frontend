@@ -9,7 +9,7 @@ const ViewProducts = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const res = await fetch("http://localhost:8080/getAllProducts", {
+        const res = await fetch("https://shineaestheticfinds-backend.onrender.com/getAllProducts", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const ViewProducts = () => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/deleteProduct/${productId}`, {
+      const res = await fetch(`https://shineaestheticfinds-backend.onrender.com/deleteProduct/${productId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -11,7 +11,7 @@ export default function ProductsPage() {
       useEffect(() => {
         const fetchAllProducts = async () => {
           try {
-            const res = await fetch("http://localhost:8080/getAllProducts", {
+            const res = await fetch("https://shineaestheticfinds-backend.onrender.com/getAllProducts", {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",

@@ -23,7 +23,7 @@ export default function Signup() {
     setSuccess("");
 
     try {
-      const res = await fetch("http://localhost:8080/register", {
+      const res = await fetch("https://shineaestheticfinds-backend.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

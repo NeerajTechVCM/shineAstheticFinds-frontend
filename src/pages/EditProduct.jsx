@@ -19,7 +19,7 @@ const EditProduct = () => {
     // Fetch all products, then find the matching product by id
     const fetchAllProducts = async () => {
       try {
-        const res = await fetch("http://localhost:8080/getAllProducts", {
+        const res = await fetch("https://shineaestheticfinds-backend.onrender.com/getAllProducts", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -73,7 +73,7 @@ const EditProduct = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:8080/editProduct/${id}`, {
+      const res = await fetch(`https://shineaestheticfinds-backend.onrender.com/editProduct/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

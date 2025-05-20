@@ -17,7 +17,7 @@ export default function AdminLogin() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8080/login", {
+      const res = await fetch("https://shineaestheticfinds-backend.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
