@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, BrowserRouter as Router } from "react-router-dom";
 
 const AppWrapper = () => {
   const [user, setUser] = useState(null);
