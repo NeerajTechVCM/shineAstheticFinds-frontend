@@ -69,4 +69,14 @@ const AppWrapper = () => {
   );
 };
 
-export default AppWrapper;
+
+
+function App() {
+  return (
+  
+      <AppWrapper />
+  
+  )
+}
+
+export default App     
