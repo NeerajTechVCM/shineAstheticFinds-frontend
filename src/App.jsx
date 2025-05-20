@@ -1,6 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, BrowserRouter as Router } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom"
 
+import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Products from "./pages/Products"
+import Contact from "./pages/Contact"
+// import Signup from "./pages/Signup"
+import AdminLogin from "./pages/Login"
+import AdminDashboard from "./pages/Dashboard"
+import Cookies from 'js-cookie';
+import EditProduct from "./pages/EditProduct"
 const AppWrapper = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
